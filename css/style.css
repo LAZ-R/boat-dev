@@ -1,0 +1,102 @@
+@import url("./core/reset.css");
+@import url("./core/variables.css");
+
+/* Text */
+@import url("./core/text/text.css");
+
+/* Layout */
+@import url("./core/layout/body.css");
+@import url("./core/layout/header.css");
+@import url("./core/layout/main.css");
+
+/* Input */
+@import url("./core/input/button.css");
+@import url("./core/input/checkbox.css");
+@import url("./core/input/select.css");
+
+/* Menu */
+@import url("./core/menu/menu.css");
+
+@import url("./core/toast.css");
+@import url("./core/icon.css");
+@import url("./core/code.css");
+@import url("./core/drawer.css");
+@import url("./core/utils.css");
+@import url("./core/separator.css");
+
+
+.move-button {
+  --button-size: calc((100% - 94svh) / 2);
+  width: var(--button-size);
+  height: 100%;
+  font-size: 10svh;
+  background-color: var(--color--bg-20);
+  border: none;
+
+  &:active {
+    img {
+      filter: hue-rotate(180deg);
+    }
+    /* background-color: var(--color--bg-30); */
+  }
+}
+
+.canevas-container {
+  --cell-size: calc(94svh / 11);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 94svh; width: 94svh; max-width: 94svh;
+  min-height: 94svh; height: 94svh; max-height: 94svh;
+  background-image: url('../medias/images/gif.gif');
+  background-position: calc(3 * var(--cell-size));
+  background-size: contain;
+  /* background-repeat: no-repeat; */
+
+  .canevas-line {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* background-color: cyan; */
+    min-width: 100%; width: 100%; max-width: 100%;
+    min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
+
+    .canevas-cell {
+      min-width: var(--cell-size); width: var(--cell-size); max-width: var(--cell-size);
+      min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
+      /* background-color: rgb(88, 187, 212); */
+
+      &.full {
+        background-image: url('../medias/images/island-01.png');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
+
+.player {
+  --cell-size: calc(94svh / 11);
+  --button-size: calc((100% - 94svh) / 2);
+
+  position: absolute;
+  top: calc(8 * var(--cell-size));
+  left: calc(var(--button-size) + (5 * var(--cell-size)));
+  min-width: var(--cell-size); width: var(--cell-size); max-width: var(--cell-size);
+  min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
+  /* background-color: greenyellow; */
+  background-image: url('../medias/images/player4.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &.crashed {
+    background-image: url('../medias/images/boom.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scale(2);
+  }
+}

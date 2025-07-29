@@ -1,0 +1,20 @@
+.lzr {
+  
+  .lzr-main {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100%; width: 100%; max-width: 100%;
+    min-height: var(--height--main); height: var(--height--main); max-height: var(--height--main);
+    background-color: var(--color--bg-100);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

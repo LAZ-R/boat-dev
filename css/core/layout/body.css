@@ -1,0 +1,20 @@
+.lzr {
+  
+  .lzr-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    min-width: 100svw; width: 100svw; max-width: 100svw;
+    min-height: 100svh; height: 100svh; max-height: 100svh;
+    background-color: var(--color--bg-0);
+    overflow: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

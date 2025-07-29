@@ -1,0 +1,14 @@
+.lzr {
+
+  .lzr-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100%; width: 100%; max-width: 100%;
+    min-height: var(--height--header); height: var(--height--header); max-height: var(--height--header);
+    padding: 0 var(--horizontal-padding);
+    background-color: var(--color--bg-15);
+    color: var(--color--fg-0);
+  }
+}
