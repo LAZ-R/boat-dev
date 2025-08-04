@@ -17,17 +17,17 @@ import { setHTMLTitle, logAppInfos } from "./utils/UTILS.js";
 // UI -----------------------
 const HEADER = document.getElementById('header');
 const MAIN = document.getElementById('main');
+
 // CONST --------------------
 const LETTERS = ['A','B','C','D','E','F','G','H','I','J','K'];
 const NUMBERS = [1,2,3,4,5,6,7,8,9,10,11];
-const COLLIDABLES = ['rock-1','rock-2','rock-3'];
-const BONUSES = ['bonus-1','bonus-2','bonus-3'];
-const MIN_LINES_BETWEEN_BONUS = 10;
+const COLLIDABLES = ['rock-1','rock-2','rock-3','rock-4'];
+const BONUSES = ['bonus-1'/* ,'bonus-2','bonus-3' */];
+const MIN_LINES_BETWEEN_BONUS = 55;
+
 // Current game -------------
 let isTouchScreen = false;
-
 let collidablePercentage = 10;
-let bonusPercentage = 40;
 
 let currentScore = 0;
 let currentBgPosition = 1;

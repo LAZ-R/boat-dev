@@ -1,4 +1,4 @@
-var cacheName = 'boat-dev-002';
+var cacheName = 'boat-dev-003';
 var filesToCache = [
   './',
   './index.html',
@@ -25,4 +25,4 @@ self.addEventListener('fetch', function(e) {
   );
 });
 
-const version = '0.0.2';
+const version = '0.0.3';
