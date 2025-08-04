@@ -44,69 +44,219 @@
 
 .canevas-container {
   --cell-size: calc(94svh / 11);
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   min-width: 94svh; width: 94svh; max-width: 94svh;
   min-height: 94svh; height: 94svh; max-height: 94svh;
-  background-image: url('../medias/images/gif2.gif');
-  background-position-y: calc(3 * var(--cell-size));
-  background-size: cover;
+  background-color: black;
   /* background-repeat: no-repeat; */
   /* filter: hue-rotate(-20deg) brightness(.5); */
 
-  .canevas-line {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    /* background-color: cyan; */
+  &.step-0 {
+    .canevas-bg {
+      filter: hue-rotate(-15deg);
+    }
+    .collidable {
+      /* filter: hue-rotate(-15deg) brightness(.9) saturate(.9); */
+    }
+  }
+  &.step-1 {
+    .canevas-bg {
+      filter: hue-rotate(0deg);
+    }
+    .collidable {
+      /* filter: hue-rotate(-15deg) brightness(.9) saturate(.9); */
+    }
+  }
+  &.step-2 {
+    .canevas-bg {
+      filter: hue-rotate(15deg);
+    }
+    .collidable {
+      filter: hue-rotate(-15deg) brightness(.9) saturate(.9);
+    }
+  }
+  &.step-3 {
+    .canevas-bg {
+      filter: hue-rotate(30deg) brightness(.9);
+    }
+    .collidable {
+      filter: hue-rotate(-30deg) brightness(.9) saturate(.9);
+    }
+  }
+  &.step-4 {
+    .canevas-bg {
+      filter: hue-rotate(45deg) brightness(.8);
+    }
+    .collidable {
+      filter: hue-rotate(-45deg) brightness(.8) saturate(.8);
+    }
+  }
+  &.step-5 {
+    .canevas-bg {
+      filter: hue-rotate(60deg) brightness(.7);
+      opacity: .75;
+    }
+    .collidable {
+      filter: hue-rotate(-60deg) brightness(.7) saturate(.5);
+    }
+  }
+  &.step-6 {
+    .canevas-bg {
+      filter: hue-rotate(60deg) brightness(.6);
+      opacity: .5;
+    }
+    .collidable {
+      filter: hue-rotate(-60deg) brightness(.3) saturate(.5);
+    }
+  }
+  &.step-7 {
+    .canevas-bg {
+      filter: hue-rotate(65deg) brightness(.7);
+      opacity: .75;
+    }
+    .collidable {
+      filter: hue-rotate(-65deg) brightness(.2) saturate(.2);
+    }
+  }
+  &.step-8 {
+    .canevas-bg {
+      filter: hue-rotate(70deg) brightness(.9);
+      opacity: 1;
+    }
+    .collidable {
+      filter: hue-rotate(-70deg) brightness(.1) saturate(0);
+    }
+  }
+
+  .canevas-bg {
+    position: absolute;
     min-width: 100%; width: 100%; max-width: 100%;
-    min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
+    min-height: 100%; height: 100%; max-height: 100%;
+    background-image: url('../medias/images/gif2.gif');
+    background-position-y: calc(3 * var(--cell-size));
+    background-size: cover;
+    z-index: 10;
+  }
 
-    .canevas-cell {
-      min-width: var(--cell-size); width: var(--cell-size); max-width: var(--cell-size);
+  .canevas-lines {
+    position: absolute;
+    min-width: 100%; width: 100%; max-width: 100%;
+    min-height: 100%; height: 100%; max-height: 100%;
+    /* background-color: cyan; */
+    z-index: 15;
+
+    .canevas-line {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      /* background-color: cyan; */
+      min-width: 100%; width: 100%; max-width: 100%;
       min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
-      /* background-color: rgb(88, 187, 212); */
+  
+      .canevas-cell {
+        min-width: var(--cell-size); width: var(--cell-size); max-width: var(--cell-size);
+        min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
+        /* background-color: rgb(88, 187, 212); */
+  
+        &.collidable {
+          &.rock-1 {
+            background-image: url('../medias/images/island-01.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+          &.rock-2 {
+            background-image: url('../medias/images/island-01.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: hue-rotate(120deg);
+          }
+          &.rock-3 {
+            background-image: url('../medias/images/island-01.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: hue-rotate(240deg);
+          }
+        }
 
-      &.full {
-        background-image: url('../medias/images/island-01.png');
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
+        &.bonus {
+          &.bonus-1 {
+            background-image: url('../medias/images/boom.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+          &.bonus-2 {
+            background-image: url('../medias/images/boom.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: hue-rotate(120deg);
+          }
+          &.bonus-3 {
+            background-image: url('../medias/images/boom.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: hue-rotate(240deg);
+          }
+        }
+
+        
       }
     }
   }
+}
 
-  &.step1 {
-    filter: hue-rotate(-4deg) brightness(.9);
-    
-    .canevas-cell.full {
-      filter: saturate(.9) brightness(.9);
+.use-bonus-container {
+  --cell-size: calc(94svh / 11);
+  --button-size: calc((100% - 94svh) / 2);
+
+  position: absolute;
+  top: 0;
+  left: var(--button-size);
+  /* background-color: rgba(255, 0, 255, 0.472); */
+  z-index: 20;
+
+  min-width: 94svh; width: 94svh; max-width: 94svh;
+  min-height: 94svh; height: 94svh; max-height: 94svh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: calc(var(--cell-size) / 2);
+
+  .current-bonus {
+    min-width: var(--cell-size); width: var(--cell-size); max-width: var(--cell-size);
+    min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
+    background-color: rgba(0, 0, 0, 0.421);
+    transform: scale(1.5);
+    border: 1px solid white;
+
+    &.bonus-1 {
+      background-image: url('../medias/images/boom.png');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
-  }
-  &.step2 {
-    filter: hue-rotate(-8deg) brightness(.8);
-    .canevas-cell.full {
-      filter: saturate(.8) brightness(.9);
+    &.bonus-2 {
+      background-image: url('../medias/images/boom.png');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      filter: hue-rotate(120deg);
     }
-  }
-  &.step3 {
-    filter: hue-rotate(-12deg) brightness(.7);
-    .canevas-cell.full {
-      filter: saturate(.7) brightness(.8);
-    }
-  }
-  &.step4 {
-    filter: hue-rotate(-16deg) brightness(.6);
-    .canevas-cell.full {
-      filter: saturate(.6) brightness(.8);
-    }
-  }
-  &.step5 {
-    filter: hue-rotate(-20deg) brightness(.5);
-    .canevas-cell.full {
-      filter: saturate(.5) brightness(.7);
+    &.bonus-3 {
+      background-image: url('../medias/images/boom.png');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      filter: hue-rotate(240deg);
     }
   }
 }
@@ -125,6 +275,7 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 30;
 
   &.crashed {
     background-image: url('../medias/images/boom.png');
@@ -147,6 +298,7 @@
   min-height: 94svh; height: 94svh; max-height: 94svh;
   background-color: rgba(0, 0, 0, 0.66);
   gap: 5svh;
+  z-index: 40;
 
   .game-over {
     font-size: 10svh;
@@ -196,6 +348,7 @@
   min-height: 94svh; height: 94svh; max-height: 94svh;
   background-color: rgba(0, 0, 0, 0.66);
   gap: 5svh;
+  z-index: 40;
 
   .start {
     font-size: 10svh;
