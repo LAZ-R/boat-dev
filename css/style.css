@@ -30,7 +30,7 @@
   width: var(--button-size);
   height: 100%;
   font-size: 10svh;
-  background-color: var(--color--bg-20);
+  background-color: var(--color--bg-0);
   border: none;
 
   img {
@@ -40,6 +40,34 @@
   &:active {
     img { filter: hue-rotate(180deg); }
   }
+}
+
+@-webkit-keyframes bg-animation-1 {
+  0% { filter: hue-rotate(0deg); }
+  10% { filter: hue-rotate(36deg); }
+  20% { filter: hue-rotate(72deg); }
+  30% { filter: hue-rotate(108deg); }
+  40% { filter: hue-rotate(144deg); }
+  50% { filter: hue-rotate(180deg); }
+  60% { filter: hue-rotate(216deg); }
+  70% { filter: hue-rotate(252deg); }
+  80% { filter: hue-rotate(288deg); }
+  90% { filter: hue-rotate(324deg); }
+  100% { filter: hue-rotate(359deg); }
+}
+
+@-webkit-keyframes fg-animation-1 {
+  0% { filter: brightness(.3) saturate(.2) hue-rotate(0deg); }
+  10% { filter: brightness(.3) saturate(.2) hue-rotate(36deg); }
+  20% { filter: brightness(.3) saturate(.2) hue-rotate(72deg); }
+  30% { filter: brightness(.3) saturate(.2) hue-rotate(108deg); }
+  40% { filter: brightness(.3) saturate(.2) hue-rotate(144deg); }
+  50% { filter: brightness(.3) saturate(.2) hue-rotate(180deg); }
+  60% { filter: brightness(.3) saturate(.2) hue-rotate(216deg); }
+  70% { filter: brightness(.3) saturate(.2) hue-rotate(252deg); }
+  80% { filter: brightness(.3) saturate(.2) hue-rotate(288deg); }
+  90% { filter: brightness(.3) saturate(.2) hue-rotate(324deg); }
+  100% { filter: brightness(.3) saturate(.2) hue-rotate(359deg); }
 }
 
 .canevas-container {
@@ -56,15 +84,15 @@
   /* filter: hue-rotate(-20deg) brightness(.5); */
 
   &.step-0 {
-    .canevas-bg { filter: hue-rotate(-15deg); }
-    .collidable { /* filter: hue-rotate(-15deg) brightness(.9) saturate(.9); */ }
+    .canevas-bg { filter: hue-rotate(-15deg) brightness(1); }
+    .collidable { filter: hue-rotate(15deg) brightness(1) saturate(1); }
   }
   &.step-1 {
-    .canevas-bg { filter: hue-rotate(0deg); }
-    .collidable { /* filter: hue-rotate(-15deg) brightness(.9) saturate(.9); */ }
+    .canevas-bg { filter: hue-rotate(0deg) brightness(1); }
+    .collidable { filter: hue-rotate(0deg) brightness(1) saturate(1); }
   }
   &.step-2 {
-    .canevas-bg { filter: hue-rotate(15deg); }
+    .canevas-bg { filter: hue-rotate(15deg)  brightness(1); }
     .collidable { filter: hue-rotate(-15deg) brightness(.9) saturate(.9); }
   }
   &.step-3 {
@@ -76,20 +104,20 @@
     .collidable { filter: hue-rotate(-45deg) brightness(.8) saturate(.8); }
   }
   &.step-5 {
-    .canevas-bg { filter: hue-rotate(60deg) brightness(.7); opacity: .75; }
-    .collidable { filter: hue-rotate(-60deg) brightness(.7) saturate(.5); }
+    .canevas-bg { filter: hue-rotate(60deg) brightness(.7); opacity: .8; }
+    .collidable { filter: hue-rotate(-60deg) brightness(.7) saturate(.8); }
   }
   &.step-6 {
-    .canevas-bg { filter: hue-rotate(60deg) brightness(.6); opacity: .5; }
-    .collidable { filter: hue-rotate(-60deg) brightness(.3) saturate(.5); }
+    .canevas-bg { filter: hue-rotate(60deg) brightness(.6); opacity: .6; }
+    .collidable { filter: hue-rotate(-60deg) brightness(.5) saturate(.6); }
   }
   &.step-7 {
-    .canevas-bg { filter: hue-rotate(65deg) brightness(.7); opacity: .75; }
-    .collidable { filter: hue-rotate(-65deg) brightness(.2) saturate(.2); }
+    .canevas-bg { filter: hue-rotate(65deg) brightness(.5); opacity: .5; }
+    .collidable { filter: hue-rotate(-65deg) brightness(.5) saturate(.4); }
   }
   &.step-8 {
-    .canevas-bg { filter: hue-rotate(70deg) brightness(.9); opacity: 1; }
-    .collidable { filter: hue-rotate(-70deg) brightness(.1) saturate(0); }
+    .canevas-bg { animation: bg-animation-1 10s infinite; opacity: 1; }
+    .collidable { animation: fg-animation-1 10s infinite; }
   }
 
   .canevas-bg {
@@ -100,6 +128,8 @@
     background-position-y: calc(3 * var(--cell-size));
     background-size: cover;
     z-index: 10;
+    opacity: 1;
+    transition: filter 2s linear, opacity 2s linear;
   }
 
   .canevas-lines {
@@ -112,7 +142,6 @@
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      /* background-color: cyan; */
       min-width: 100%; width: 100%; max-width: 100%;
       min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
   
@@ -121,9 +150,11 @@
         min-height: var(--cell-size); height: var(--cell-size); max-height: var(--cell-size);
   
         &.collidable {
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
+          transition: filter 2s linear;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+
           &.rock-1 { background-image: url('../medias/images/island-01.png'); }
           &.rock-2 { background-image: url('../medias/images/island-02.png'); }
           &.rock-3 { background-image: url('../medias/images/island-03.png'); }
@@ -131,18 +162,18 @@
         }
 
         &.bonus {
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
           &.bonus-1 {
-            background-image: url('../medias/images/bonus.png');
+            background-image: url('../medias/images/bonus-2.png');
           }
           &.bonus-2 {
-            background-image: url('../medias/images/bonus.png');
+            background-image: url('../medias/images/bonus-2.png');
             filter: hue-rotate(120deg);
           }
           &.bonus-3 {
-            background-image: url('../medias/images/bonus.png');
+            background-image: url('../medias/images/bonus-2.png');
             filter: hue-rotate(240deg);
           }
         }
@@ -181,14 +212,14 @@
     background-repeat: no-repeat;
 
     &.bonus-1 {
-      background-image: url('../medias/images/bonus.png');
+      background-image: url('../medias/images/bonus-2.png');
     }
     &.bonus-2 {
-      background-image: url('../medias/images/bonus.png');
+      background-image: url('../medias/images/bonus-2.png');
       filter: hue-rotate(120deg);
     }
     &.bonus-3 {
-      background-image: url('../medias/images/bonus.png');
+      background-image: url('../medias/images/bonus-2.png');
       filter: hue-rotate(240deg);
     }
   }

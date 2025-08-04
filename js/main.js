@@ -30,18 +30,22 @@ let isTouchScreen = false;
 let collidablePercentage = 10;
 
 let currentScore = 0;
+let currentStep = 0;
 let currentBgPosition = 1;
 let currentPlayerColumn = 6;
 let currentLinesBeforeBonus = MIN_LINES_BETWEEN_BONUS;
 let currentBonus = null;
-let isCrashed = false;
 
 let defilement = null;
+
+let isPlaying = false;
+let isCrashed = false;
 
 // FUNCTIONS //////////////////////////////////////////////////////////////////////////////////////
 
 // USER INTERACTIONS ##########################################################
 const onStartClick = () => {
+  isPlaying = true;
   document.getElementById('startContainer').classList.add('hidden')
   defilement = setInterval(() => {
     currentLinesBeforeBonus -= 1;
@@ -87,6 +91,15 @@ document.onkeydown = function (e) {
     movePlayer('left');
   } else if (e.key === "ArrowRight") {
     movePlayer('right');
+  } else if (e.key === " ") {
+    e.preventDefault();
+    if (!isPlaying && !isCrashed) {
+      onStartClick();
+    } else if (isPlaying && !isCrashed) {
+      onUseBonusClick();
+    } else if (isPlaying && isCrashed) {
+      window.location = './';
+    }
   }
 };
 

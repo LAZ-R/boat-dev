@@ -1,4 +1,4 @@
-# BOAT (dev v0.0.3)
+# BOAT (dev v0.0.4)
 
 **[Try it](https://laz-r.github.io/boat-dev/)**
 
